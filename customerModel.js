@@ -1,11 +1,15 @@
 import Sequelize from "sequelize";
 import sequelize from "./database.js";
 
+import { v4 as uuidv4 } from 'uuid'
+
 const Customer = sequelize.define('customer_table', {
     id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+        type: Sequelize.STRING,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: () => uuidv4()
+
     },
     name: {
         type: Sequelize.STRING,
@@ -15,7 +19,11 @@ const Customer = sequelize.define('customer_table', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    registration_date: {
+    createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    updatedAt: {
         type: Sequelize.DATE,
         allowNull: false
     }
