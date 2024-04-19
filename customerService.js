@@ -37,3 +37,16 @@ export const deleteCustormer = async (id) => {
         throw error;
     }
 }
+export const updateCustomer = async (id, data) => {
+    try {
+        const customer = await Customer.findByPk(id);
+        if (!customer) {
+            throw new Error("Customer Not found");
+        }
+        await customer.update(data);
+        return customer;
+    } catch (error) {
+        throw (error);
+    }
+
+}
