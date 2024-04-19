@@ -1,9 +1,10 @@
 import express from 'express'
-import createCustomer from './customerController.js'
+import { createNewCustomer, allCustomers } from './customerController.js'
 
 const router = express.Router();
 
-router.post('/', createCustomer)
+router.post('/', createNewCustomer);
+router.get('/', allCustomers);
 
 
 export default router;

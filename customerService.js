@@ -1,6 +1,5 @@
 import Customer from "./customerModel.js";
-
-async function createCustomer(customerData) {
+export const createCustomer = async (customerData) => {
     try {
         const newCustomer = await Customer.create(customerData);
 
@@ -9,5 +8,11 @@ async function createCustomer(customerData) {
         throw error;
     }
 };
-
-export default createCustomer;
+export const findAllCustomers = async () => {
+    try {
+        const customers = await Customer.findAll();
+        return customers;
+    } catch (error) {
+        throw error;
+    }
+}
